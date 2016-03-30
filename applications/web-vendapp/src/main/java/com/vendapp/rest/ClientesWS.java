@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
-import com.vendapp.model.Cliente;
+
+import com.vendapp.model.Clientes;
 import com.vendapp.repositories.ClientesRepository;
 import com.vendapp.utils.AppUtils;
 
@@ -32,7 +33,7 @@ public class ClientesWS {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = { "application/json" })
-	public List<Cliente> list() {
+	public List<Clientes> clientelist() {
 		try {
 			return Lists.newArrayList(service.findAll());
 		} catch (Exception e) {
@@ -42,7 +43,7 @@ public class ClientesWS {
 	}
 
 	@RequestMapping(value = "/find", method = RequestMethod.GET, produces = { "application/json" })
-	public Cliente findByPK(@RequestParam(name = "id") Integer id) {
+	public Clientes findByPK(@RequestParam(name = "id") Integer id) {
 		try {
 			logger.info("ID de busqueda recibido -> {}", id); 
 			return service.findOne(id);
@@ -52,9 +53,9 @@ public class ClientesWS {
 		}
 	}
 
-	// Me gusta mas asi, mas estilo REST
+	// Estilo REST
 	@RequestMapping(value = "/find/{id}", method = RequestMethod.GET, produces = { "application/json" })
-	public Cliente findByID(@PathVariable Integer id) {
+	public Clientes findByID(@PathVariable Integer id) {
 		try {
 			logger.info("ID de busqueda recibido -> {}", id); 
 			return service.findOne(id);

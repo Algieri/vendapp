@@ -37,6 +37,7 @@ public class JPAConfig {
 		factoryBean.setPackagesToScan(new String[] { "com.vendapp.model" });
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		vendorAdapter.setShowSql(GeneralConfig.PROPERTY_NAME_HIBERNATE_SHOW_SQL);
+		vendorAdapter.setDatabasePlatform(GeneralConfig.PROPERTY_NAME_HIBERNATE_DIALECT);
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 		return factoryBean;
 	}
